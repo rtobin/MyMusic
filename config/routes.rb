@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   #   resource :counter, only: [:update]
   # end
 
+  resources :bands
+
+
+
   root to: redirect("/session/new")
 
 
