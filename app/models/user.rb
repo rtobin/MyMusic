@@ -6,10 +6,15 @@ and one numeric digit.
 PSSWRD
 
   attr_reader :password
-  validates :email, :password_digest, :session_token, presence: true, uniqueness: true
+  validates :email,
+            :password_digest,
+            :session_token,
+            presence: true, uniqueness: true
+
   validates_format_of :password,
     with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}\z/,
     message: "Invalid password! \n #{INVALID_PASSWORD}"
+
   validates :password, length: { minimum: 6, maximum: 15, allow_nil: true}
 
   before_validation :ensure_session_token
