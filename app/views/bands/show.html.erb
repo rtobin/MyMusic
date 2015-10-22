@@ -2,8 +2,7 @@
 
 <table>
   <tr>
-    <th>Attribute</th>
-    <th>Value</th>
+    <th>Albums</th>
   </tr>
   <% @band.albums.each do |album| %>
     <tr>
@@ -11,10 +10,6 @@
     </tr>
   <% end %>
 </table>
-
-
-<% if logged_in? %>
-  <%= link_to "back to bands", bands_url %>
-  <%= link_to "add album", new_band_album_url %>
-  <%= link_to "add tracks", new_album_track_url %>
-<% end %>
+<br><br>
+<%= link_to "back to bands", bands_url %>
+<%= link_to "Edit Band", edit_band_url(@band) %>
