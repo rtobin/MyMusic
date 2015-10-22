@@ -33,6 +33,10 @@ PSSWRD
     BCrypt::Password.new(super)
   end
 
+  def is_password?(password)
+    password_digest.is_password?(password)
+  end
+
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
   end
@@ -42,9 +46,6 @@ PSSWRD
     self.save!
   end
 
-  def is_password?(password)
-    password_digest.is_password?(password)
-  end
 
 
 end
