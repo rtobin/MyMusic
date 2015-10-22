@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy, :new]
-  resource :user, only: [:create, :new, :show] do
-    resource :counter, only: [:update]
-  end
+
+  resources :users, only: [:create, :new, :show]
+
+  # resource :user, only: [:create, :new, :show] do
+  #   resource :counter, only: [:update]
+  # end
 
   root to: redirect("/session/new")
 

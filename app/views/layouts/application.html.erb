@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>MyMusic</title>
-  
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<p class="flash"><%= flash.notice %></p>
 
 <%= yield %>
 

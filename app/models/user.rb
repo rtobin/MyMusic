@@ -12,11 +12,17 @@ PSSWRD
             :session_token,
             presence: true, uniqueness: true
 
-  validates_format_of :password,
-    with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}\z/,
-    message: "Invalid password! \n #{INVALID_PASSWORD}"
+
+  #  validates_format_of :email,
+  #         with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+  #         on: :create
 
   validates :password, length: { minimum: 6, maximum: 15, allow_nil: true}
+
+  validates_format_of :password,
+    with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}\z/,
+    message: INVALID_PASSWORD,
+    on: :create
 
   before_validation :ensure_session_token
 

@@ -6,7 +6,7 @@
   <% end %>
 </ul>
 
-<form action="/session" method="POST">
+<form action="<%= session_url %>" method="POST">
   <input
     type="hidden"
     name="authenticity_token"
