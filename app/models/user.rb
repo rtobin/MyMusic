@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   INVALID_PASSWORD =<<-PSSWRD
 Password must be at least 6 characters, no more than 16 characters,
 and must include at least one upper case letter, one lower case letter,

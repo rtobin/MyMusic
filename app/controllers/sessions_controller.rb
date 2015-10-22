@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
     unless @user
       # bad credentials!
       # back to login
+      flash.now[:errors] = ["Incorrect login credentials."]
       render :new
     else
       # good credentials!

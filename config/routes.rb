@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resource :counter, only: [:update]
   end
 
+  root to: redirect("/session/new")
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

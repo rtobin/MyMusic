@@ -1,0 +1,33 @@
+<h1>Log in!</h1>
+
+<ul>
+  <% flash[:errors].try(:each) do |err_msg| %>
+    <li><%= err_msg %></li>
+  <% end %>
+</ul>
+
+<form action="/session" method="POST">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+    <label for="user_email">email: </label>
+    <input type="text" name="user[email]" id="user_email">
+    <br>
+
+    <label for="user_password">password: </label>
+    <input type="password" name="user[password]" id="user_password">
+    <br>
+
+    <input type="submit" value="Log in">
+</form>
+
+<form action="/user/new" method="get">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <button>New User!</button>
+</from>
