@@ -9,13 +9,14 @@ class AlbumsController < ApplicationController
       redirect_to album_url(@album)
     else
       flash.now[:errors] = @album.errors.full_messages
+      @band = @album.band
       render :new
     end
   end
 
   def new
     @album = Album.new(band_id: params[:band_id])
-    @bands = Band.all
+    @band = Band.find(params[:band_id])
     render :new
   end
 
@@ -42,11 +43,12 @@ class AlbumsController < ApplicationController
 
   def destroy
     @album = Album.find_by(params[:id])
-    @album.delete
+    @album.destroy
+    redirect_to band_url(@album.band_id)
   end
 
   private
   def album_params
-    params.require(:album).permit(:title, :band_id, :set)
+    params.require(:album).permit(:title, :band_id, :set, :year)
   end
 end
