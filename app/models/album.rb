@@ -16,21 +16,16 @@ class Album < ActiveRecord::Base
   has_many :tracks, dependent: :destroy
 
   validates(
+    :band,
+    :year,
     :title,
     :band_id,
     :set,
     presence: true)
 
-  validates :set, inclusion: ALBUM_SETS, allow_nil: true
+  validates :set, inclusion: ALBUM_SETS
+  validates :name, uniqueness: { scope: :band_id }
+  validates :year, numericality: { minimum: 1000 } 
 
-  def set_studio!
-    self.set = "studio"
-    self.save!
-  end
-
-  def set_live!
-    self.set = "live"
-    self.save!
-  end
 
 end
