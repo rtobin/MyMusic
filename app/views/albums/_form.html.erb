@@ -21,12 +21,20 @@
     id="album_title"
     value="<%= album.title %>">
 
+  <br>
+
+  <label for="album_year">Album Year:</label>
+  <input
+    type="integer"
+    name="album[year]"
+    id="album_year"
+    value="<%= album.year %>">
   <br><br>
 
   <label for="album_band">Band:</label>
   <select name="album[band_id]" id="album_band">
     <option></option>
-    <% @bands.each do |band| %>
+    <% Band.all.each do |band| %>
       <option
         <%= album.band_id == band.id ? "selected" : "" %>
         value="<%= band.id %>">

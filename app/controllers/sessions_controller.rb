@@ -11,13 +11,12 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    unless user
+    if user.nil?
       # bad credentials!
       # back to login
       flash.now[:errors] = ["Try again!"]
       render :new
-    elsif !user.activated
-      redirect_to root_url, alert: "You must activate your account first! Check your email."
+    #direct_to root_url, alert: "You must activate your account first! Check your email."
     else
       # good credentials!
       # sign the user in

@@ -2,12 +2,15 @@
 <html>
 <head>
   <title>MyMusic</title>
-
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<p class="flash"><%= flash.notice %></p>
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
 
 
 
@@ -15,10 +18,13 @@
 <br><br><br>
 </body>
 
-<% if current_user %>
-  <footer>
-    Logged in under email:
-    <%= current_user.email %>
-  </footer>
-<% end %>
+<footer>
+  <% if logged_in? %>
+    <p>Logged in under email:
+    <%= current_user.email %></p>
+    <%= button_to "Log Out", session_url, method: :delete %>
+  <% elsif current_user %>
+    <%= link_to("Activate", activate_users_url(activation_token: @current_user.activation_token)) %>
+  <% end %>
+</footer>
 </html>
