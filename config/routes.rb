@@ -2,13 +2,9 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy, :new]
 
-  resources :users, only: [:create, :new, :show]
-
-  # resource :user, only: [:create, :new, :show] do
-  #   resource :counter, only: [:update]
-  # end
-
-
+  resources :users, only: [:create, :new, :show] do
+    get :activate, on: :collection
+  end
 
   resources :bands do
     resources :albums, only: :new
@@ -22,9 +18,9 @@ Rails.application.routes.draw do
   resources :tracks, except: [:index, :new]
 
 
-  #resources :albums
+  resources :notes, only: [:create, :destroy]
 
-  root to: redirect("/session/new")
+  root to: redirect("/bands")
 
 
 

@@ -21,7 +21,7 @@ class Track < ActiveRecord::Base
 
   validates(
     :album,
-    :name,
+    :title,
     :ord,
     presence: :true
   )

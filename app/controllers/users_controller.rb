@@ -29,14 +29,13 @@ class UsersController < ApplicationController
     render :show
   end
 
-  # The callback we defined requires that a user be logged in to
-  # look at a users#show page. However, it does not enforce that user
-  # A may not look at user B's
-  # show page. Write a new filter in the UsersController to do this.
-  # def require_log_in_auth!
-  #
-  #   redirect_to new_session_url unless
-  # end
+  def activate
+    @user = User.find_by_activation_token(params[:activation_token])
+    @user.activate!
+    login_user!(@user)
+    flash[:notice] = "Successfully activated your account!"
+    redirect_to root_url
+  end
 
   private
   def user_params

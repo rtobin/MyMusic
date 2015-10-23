@@ -24,8 +24,8 @@ class Album < ActiveRecord::Base
     presence: true)
 
   validates :set, inclusion: ALBUM_SETS
-  validates :name, uniqueness: { scope: :band_id }
-  validates :year, numericality: { minimum: 1000 } 
+  validates :title, uniqueness: { scope: :band_id }
+  validates :year, numericality: { minimum: 1000 }
 
 
 end
