@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       # good credentials!
       # sign the user in
       log_in!(@user) # new session_token
-      redirect_to user_url
+      redirect_to user_url(@user.id)
     end
   end
 

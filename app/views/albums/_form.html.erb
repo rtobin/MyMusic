@@ -2,7 +2,7 @@
 <% method = (album.persisted? ? :patch : :post) %>
 
 <% if album.persisted? %>
-  <%= button_to "<- Album Page", album_url(album) %>
+  <%= button_to "<- Album Page", album_url(album), method: :get %>
 <% end %>
 
 <br><br>
@@ -47,12 +47,27 @@
     >
   <% end %>
 
+  <br><br>
 
   <% if album.persisted? %>
-    <% album.tracks.each do |track| %>
+  <label for="trackslist">TRACKS</label>
+    <table id="trackslist">
+      <tr>
+        <th>#</th>
+        <th>Song</th>
+        <th>Length</th>
+        <th>type</th>
+      </tr>
 
-    <% end %>
-    <%= button_to "Add Track", new_album_track_url %>
+        <% @album.tracks.each_with_index do |track, i| %>
+          <tr>
+            <%= render "track_tr", track: track, num: i %>
+            <td><%= button_to "edit", edit_track_url(track.id), method: :get %></td>
+          </tr>
+        <% end %>
+
+    </table>
+    <%= button_to "Add Track", new_album_track_url(album.id) %>
   <% end %>
 
   <br>

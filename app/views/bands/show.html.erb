@@ -3,10 +3,12 @@
 <table>
   <tr>
     <th>Albums</th>
+    <th>Time Added</th>
   </tr>
   <% @band.albums.each do |album| %>
     <tr>
-      <li><%= link_to album.title, album_url(album.id) %></li>
+      <td><li><%= link_to album.title, album_url(album.id) %></li></td>
+      <td><%= album.created_at %></td>
     </tr>
   <% end %>
 </table>

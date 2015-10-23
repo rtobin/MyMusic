@@ -15,8 +15,10 @@
 <br><br><br>
 </body>
 
-<footer>
-  Logged in under email:
-  <%= current_user.email %>
-</footer>
+<% if current_user %>
+  <footer>
+    Logged in under email:
+    <%= current_user.email %>
+  </footer>
+<% end %>
 </html>

@@ -2,11 +2,6 @@ class AlbumsController < ApplicationController
 
   before_action :require_log_in!
 
-  def index
-    @albums = Album.all
-    render :index
-  end
-
   def create
     @album = Album.new(album_params)
 
@@ -25,6 +20,7 @@ class AlbumsController < ApplicationController
   end
 
   def edit
+    @bands = Band.all
     @album = Album.find(params[:id])
     render :edit
   end

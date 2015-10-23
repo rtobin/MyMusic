@@ -1,6 +1,8 @@
 <h1><%= @album.title %></h1>
 band: <%= @album.band.name %>
 
+<br><br>
+
 <label for="trackslist">TRACKS</label>
 <table id="trackslist">
   <tr>
@@ -10,6 +12,9 @@ band: <%= @album.band.name %>
     <th>type</th>
   </tr>
     <% @album.tracks.each_with_index do |track, i| %>
-      <%= render "track_tr", track: track, num: i %>
+      <tr><%= render "track_tr", track: track, num: i %></tr>
     <% end %>
 </table>
+
+<%= link_to "back to band", band_url(@album.band.id) %>
+<%= link_to "Edit Album", edit_album_url(@album) %>

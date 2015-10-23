@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
+User.create(email: "rtizzi@gmail.com", password: "Iamtheworst1")
 
 3.times do |i|
   Band.create(name: "Band#{i}")
