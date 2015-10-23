@@ -10,8 +10,27 @@
 #
 
 class Album < ActiveRecord::Base
+  ALBUM_SETS = ["live", "studio"]
 
   belongs_to :band
-
   has_many :tracks, dependent: :destroy
+
+  validates(
+    :title,
+    :band_id,
+    :set,
+    presence: true)
+
+  validates :set, inclusion: ALBUM_SETS, allow_nil: true
+
+  def set_studio!
+    self.set = "studio"
+    self.save!
+  end
+
+  def set_live!
+    self.set = "live"
+    self.save!
+  end
+
 end

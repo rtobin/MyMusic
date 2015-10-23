@@ -9,7 +9,14 @@
 
 <p class="flash"><%= flash.notice %></p>
 
-<%= yield %>
 
+
+<%= yield %>
+<br><br><br>
 </body>
+
+<footer>
+  Logged in under email:
+  <%= current_user.email %>
+</footer>
 </html>

@@ -1,0 +1,15 @@
+<h1><%= @album.title %></h1>
+band: <%= @album.band.name %>
+
+<label for="trackslist">TRACKS</label>
+<table id="trackslist">
+  <tr>
+    <th>#</th>
+    <th>Song</th>
+    <th>Length</th>
+    <th>type</th>
+  </tr>
+    <% @album.tracks.each_with_index do |track, i| %>
+      <%= render "track_tr", track: track, num: i %>
+    <% end %>
+</table>

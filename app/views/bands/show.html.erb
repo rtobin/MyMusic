@@ -6,7 +6,7 @@
   </tr>
   <% @band.albums.each do |album| %>
     <tr>
-      <li><%= link_to album.name, band_url(band) %></li>
+      <li><%= link_to album.title, album_url(album.id) %></li>
     </tr>
   <% end %>
 </table>
